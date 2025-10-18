@@ -13,7 +13,6 @@ import {
   FormControl,
   FormMessage,
   FormField,
-  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
@@ -24,7 +23,7 @@ import { useForm } from "react-hook-form";
 import { loginZodSchema, type LoginZodSchemaType } from "@/lib/zod.schema";
 
 const LoginPage = () => {
-  const { loading } = useAuthActions();
+  const { loading, login } = useAuthActions();
 
   const form = useForm<LoginZodSchemaType>({
     resolver: zodResolver(loginZodSchema),
@@ -34,8 +33,20 @@ const LoginPage = () => {
     },
   });
 
-  const onSubmit = (data: LoginZodSchemaType) => {
-    console.log(data);
+  const onSubmit = async (data: LoginZodSchemaType) => {
+    const response = await login(data);
+    if (!response.success) {
+      if (response.error?.code === "auth/invalid-login-credentials") {
+        form.setError("email", {
+          type: "manual",
+          message: "Invalid email or password",
+        });
+        form.setError("password", {
+          type: "manual",
+          message: "Invalid email or password",
+        });
+      }
+    }
   };
 
   return (
