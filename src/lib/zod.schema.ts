@@ -16,7 +16,9 @@ export const registerZodSchema = z
       .min(1, "Display name is required")
       .max(50, "Display name must be at most 50 characters long"),
     password: z.string().min(6, "Password must be at least 6 characters long"),
-    confirmPassword: z.string(),
+    confirmPassword: z
+      .string()
+      .min(6, "Password must be at least 6 characters long"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",

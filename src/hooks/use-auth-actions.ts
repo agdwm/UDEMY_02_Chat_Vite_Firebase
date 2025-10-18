@@ -56,10 +56,13 @@ export const useAuthActions = () => {
         data.password
       );
 
-      if (currentUser) {
+      if (currentUser.user) {
         await updateProfile(currentUser.user, {
           displayName: data.displayName,
         });
+
+        //Espera a que se actualicen los datos del usuario actual desde Firebase
+        await currentUser.user.reload();
       }
 
       return {
