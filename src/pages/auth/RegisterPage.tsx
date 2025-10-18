@@ -1,3 +1,5 @@
+import { useForm } from "react-hook-form";
+
 import CardFooterAuth from "@/components/CardFooterAuth";
 import {
   Card,
@@ -7,9 +9,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useAuthActions } from "@/hooks/use-auth-actions";
+import type { LoginZodSchemaType } from "@/lib/zod.schema";
 
 const RegisterPage = () => {
   const { loading } = useAuthActions();
+  const { register } = useForm<LoginZodSchemaType>();
 
   return (
     <Card>
