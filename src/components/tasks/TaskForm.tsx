@@ -17,7 +17,7 @@ import { useTransition } from "react";
 import { useTaskActions } from "@/hooks/use-task-actions";
 import { toast } from "sonner";
 
-const TasksForm = () => {
+const TaskForm = () => {
   const [isPending, startTransition] = useTransition();
 
   const { createTask } = useTaskActions();
@@ -36,6 +36,7 @@ const TasksForm = () => {
         await createTask(values);
         form.reset();
       } catch (error) {
+        console.error(error);
         toast.error("Error creating task");
       }
     });
@@ -70,11 +71,11 @@ const TasksForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending} className="mb-8">
           {isPending ? "Creating..." : "Create Task"}
         </Button>
       </form>
     </Form>
   );
 };
-export default TasksForm;
+export default TaskForm;

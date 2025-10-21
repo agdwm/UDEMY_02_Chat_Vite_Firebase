@@ -1,5 +1,13 @@
 import { useUser, useFirestore, useFirestoreCollectionData } from "reactfire";
-import { collection, query, where, addDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import type { Task } from "@/schemas/task.schema";
 
 export const useTaskActions = () => {
@@ -30,9 +38,32 @@ export const useTaskActions = () => {
     return await addDoc(taskCollectionRef, newTask);
   };
 
+  // DETELE TASK
+  const deleteTask = async (taskId: string) => {
+    const taskDoc = doc(db, "tasks", taskId);
+    return await deleteDoc(taskDoc);
+  };
+
+  // TOGGLE TASK COMPLETED
+  const toggleTaskCompleted = async (taskId: string) => {
+    const task = tasks.find((task) => task.id === taskId);
+    const taskDoc = doc(db, "tasks", taskId);
+
+    if (!task) {
+      throw new Error("Task not found");
+    }
+
+    return await updateDoc(taskDoc, {
+      completed: !task.completed,
+    });
+  };
+
   return {
     tasks: tasks as Task[],
     isLoading: status === "loading",
+
     createTask,
+    deleteTask,
+    toggleTaskCompleted,
   };
 };
