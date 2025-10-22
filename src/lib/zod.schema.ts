@@ -44,7 +44,16 @@ export const taskZodSchema = z.object({
     .optional(),
 });
 
+export const messageZodSchema = z.object({
+  text: z
+    .string()
+    .trim()
+    .min(1, "Text is required")
+    .max(500, "Text must be 500 chars"),
+});
+
 export type LoginZodSchemaType = z.infer<typeof loginZodSchema>;
 export type RegisterZodSchemaType = z.infer<typeof registerZodSchema>;
 export type ProfileZodSchemaType = z.infer<typeof profileZodSchema>;
 export type TaskZodSchemaType = z.infer<typeof taskZodSchema>;
+export type MessageZodSchemaType = z.infer<typeof messageZodSchema>;
