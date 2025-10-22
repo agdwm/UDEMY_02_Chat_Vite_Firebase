@@ -30,7 +30,7 @@ export const profileZodSchema = z.object({
     .string()
     .min(1, "Display name is required")
     .max(50, "Display name must be at most 50 caracteres long"),
-  photoUrl: z.union([z.url("Invalid URL format"), z.literal("")]).optional(),
+  photoURL: z.union([z.url("Invalid URL format"), z.literal("")]).optional(),
 });
 
 export const taskZodSchema = z.object({

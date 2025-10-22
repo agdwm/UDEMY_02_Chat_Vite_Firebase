@@ -1,3 +1,4 @@
+import { useUserActions } from "@/hooks/use-user-actions";
 import type { AuthError } from "firebase/auth";
 
 import {
@@ -20,6 +21,8 @@ interface AuthResponse {
 export const useAuthActions = () => {
   const [loading, setLoading] = useState(false);
   const auth = useAuth();
+
+  const { createOrUpdateUser } = useUserActions();
 
   const login = async (data: {
     email: string;
@@ -57,9 +60,13 @@ export const useAuthActions = () => {
       );
 
       if (currentUser.user) {
+        // Update authentication
         await updateProfile(currentUser.user, {
           displayName: data.displayName,
         });
+
+        // Update database
+        await createOrUpdateUser(currentUser.user);
 
         //Espera a que se actualicen los datos del usuario actual desde Firebase
         await currentUser.user.reload();
@@ -84,7 +91,10 @@ export const useAuthActions = () => {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const data = await signInWithPopup(auth, provider);
+
+      await createOrUpdateUser(data.user);
+
       return {
         success: true,
         error: null,

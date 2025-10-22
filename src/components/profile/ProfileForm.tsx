@@ -27,7 +27,7 @@ const ProfileForm = ({ user }: Props) => {
     resolver: zodResolver(profileZodSchema),
     defaultValues: {
       displayName: user?.displayName || "",
-      photoUrl: user?.photoURL || "",
+      photoURL: user?.photoURL || "",
     },
   });
 
@@ -57,7 +57,7 @@ const ProfileForm = ({ user }: Props) => {
         />
         <FormField
           control={form.control}
-          name="photoUrl"
+          name="photoURL"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Photo URL</FormLabel>
