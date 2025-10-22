@@ -12,10 +12,3 @@ export interface LastMessage {
   senderId: string;
   timestamp: Timestamp | FieldValue;
 }
-
-export interface Message {
-  id: string;
-  text: string;
-  senderId: string;
-  timestamp: Timestamp | FieldValue;
-}
