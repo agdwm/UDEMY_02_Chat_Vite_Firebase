@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import ChatRoom from "@/components/chat/ChatRoom";
+
 import { useRoomActions } from "@/hooks/use-room-actions";
 
 interface Props {
@@ -11,11 +12,12 @@ const ChatListRoom = ({ handleClickRoomId }: Props) => {
   return (
     <div>
       {rooms.map((room) => (
-        <Button key={room.id} onClick={() => handleClickRoomId(room.id)}>
-          {room.id}
-        </Button>
+        <ChatRoom
+          room={room}
+          key={room.id}
+          handleClickRoomId={handleClickRoomId}
+        />
       ))}
-      <pre>{JSON.stringify(rooms, null, 2)}</pre>
     </div>
   );
 };
