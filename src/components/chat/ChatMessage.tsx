@@ -16,7 +16,7 @@ const ChatMessage = ({ message }: Props) => {
   return (
     <div
       className={cn(
-        "max-w-[80%] mb-2 p-4 rounded",
+        "max-w-[80%] mb-2 p-2 rounded",
         isFriend ? "bg-pink-200" : "bg-green-200 ml-auto"
       )}
     >
@@ -29,7 +29,7 @@ const ChatMessage = ({ message }: Props) => {
           :
         </p>
       ) : (
-        <p className="truncate text-xs">{user.email}:</p>
+        <p className="truncate text-xs">{user.email}</p>
       )}
     </div>
   );

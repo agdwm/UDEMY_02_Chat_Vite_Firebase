@@ -52,8 +52,13 @@ export const messageZodSchema = z.object({
     .max(500, "Text must be 500 chars"),
 });
 
+export const emailFriendZodSchema = z.object({
+  email: z.string().trim().pipe(z.email("Invalid email format")),
+});
+
 export type LoginZodSchemaType = z.infer<typeof loginZodSchema>;
 export type RegisterZodSchemaType = z.infer<typeof registerZodSchema>;
 export type ProfileZodSchemaType = z.infer<typeof profileZodSchema>;
 export type TaskZodSchemaType = z.infer<typeof taskZodSchema>;
 export type MessageZodSchemaType = z.infer<typeof messageZodSchema>;
+export type EmailFriendZodSchemaType = z.infer<typeof emailFriendZodSchema>;

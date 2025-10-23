@@ -44,7 +44,10 @@ const ChatFormMessage = ({ roomId }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-2 bg-white p-4"
+      >
         <FormField
           control={form.control}
           name="text"
@@ -57,7 +60,7 @@ const ChatFormMessage = ({ roomId }: Props) => {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending} className="w-full">
           {isPending ? "Sending..." : "Send"}
         </Button>
       </form>
