@@ -22,11 +22,11 @@ const ChatPage = () => {
           </Suspense>
         </section>
         {/* CHAT SECTION */}
-        <section className="h-[calc(100dvh-200px)] min-h-0 overflow-y-auto bg-gray-100 p-4 space-y-6">
+        <section>
           {roomId ? (
             <Suspense fallback={<div>Loading messages...</div>}>
-              <ChatFormMessage roomId={roomId} />
               <ChatMessages roomId={roomId} />
+              <ChatFormMessage roomId={roomId} />
             </Suspense>
           ) : (
             <div>Selecciona una sala para chatear</div>

@@ -9,7 +9,7 @@ const ChatMessages = ({ roomId }: Props) => {
   const { messages } = useMessageActions(roomId);
 
   return (
-    <div>
+    <div className="h-[calc(100dvh-300px)] min-h-0 overflow-y-auto bg-gray-100 p-4 space-y-6">
       {messages.map((message) => (
         <ChatMessage key={message.id} message={message} />
       ))}

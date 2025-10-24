@@ -34,23 +34,29 @@ const Navbar = () => {
   }
 
   return (
-    <header className="shadow-md border-b">
-      <nav className="p-4 flex gap-4">
-        {navigation.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.href}
-            className={({ isActive }) => getNavLinkClasses(isActive)}
-            end
-          >
-            <item.icon className="h-5 w-5" />
-            {item.name}
-          </NavLink>
-        ))}
-        <Button onClick={logout} className="ml-auto">
-          <LogOut className="h-5 w-5" />
-          Logout
-        </Button>
+    <header className="shadow-md border-b w-full">
+      <nav className="flex flex-wrap items-center px-4 py-3 gap-2 md:gap-4 w-full">
+        <div className="flex flex-1 gap-3 md:gap-6">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                getNavLinkClasses(isActive) + " px-3 py-2 rounded-md"
+              }
+              end
+            >
+              <item.icon className="h-7 w-7" />
+              <span className="hidden sm:inline">{item.name}</span>
+            </NavLink>
+          ))}
+        </div>
+        <div className="flex-1 flex justify-end">
+          <Button onClick={logout} className="flex items-center gap-2">
+            <LogOut className="h-5 w-5" />
+            <span className="hidden md:inline">Logout</span>
+          </Button>
+        </div>
       </nav>
     </header>
   );
