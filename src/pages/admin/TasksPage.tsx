@@ -1,6 +1,6 @@
 import TaskForm from "@/components/tasks/TaskForm";
 import TaskList from "@/components/tasks/TaskList";
-import Title from "@/components/ui/title";
+import Title from "@/components/ui/Title";
 import { Suspense } from "react";
 
 const TasksPage = () => {

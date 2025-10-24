@@ -1,5 +1,5 @@
 import ProfileForm from "@/components/profile/ProfileForm";
-import Title from "@/components/ui/title";
+import Title from "@/components/ui/Title";
 import { useUser } from "reactfire";
 
 const ProfilePage = () => {

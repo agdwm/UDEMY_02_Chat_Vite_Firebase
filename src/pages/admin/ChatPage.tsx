@@ -2,7 +2,8 @@ import ChatFormMessage from "@/components/chat/ChatFormMessage";
 import ChatFormRoom from "@/components/chat/ChatFormRoom";
 import ChatListRoom from "@/components/chat/ChatListRoom";
 import ChatMessages from "@/components/chat/ChatMessages";
-import Title from "@/components/ui/title";
+import Title from "@/components/ui/Title";
+
 import { Suspense, useState } from "react";
 
 const ChatPage = () => {
