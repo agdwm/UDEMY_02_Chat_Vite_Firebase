@@ -5,7 +5,7 @@ const TaskList = () => {
   const { tasks } = useTaskActions();
 
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {tasks.map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}

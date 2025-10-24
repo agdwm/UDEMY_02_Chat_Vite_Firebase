@@ -15,7 +15,11 @@ const ChatRoom = ({ room, handleClickRoomId }: Props) => {
   const friendUID = room.participants.find((id) => id !== user?.uid) || "";
 
   return (
-    <Button onClick={() => handleClickRoomId(room.id)}>
+    <Button
+      variant="ghost"
+      className="w-full justify-start rounded-none border-b border-border px-4 py-6 hover:bg-muted/50"
+      onClick={() => handleClickRoomId(room.id)}
+    >
       <Suspense fallback={<div>Loading friend info...</div>}>
         <FriendEmail friendUID={friendUID} />
       </Suspense>

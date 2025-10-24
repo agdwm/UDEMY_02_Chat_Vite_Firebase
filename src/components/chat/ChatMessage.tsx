@@ -16,21 +16,23 @@ const ChatMessage = ({ message }: Props) => {
   return (
     <div
       className={cn(
-        "max-w-[80%] mb-2 p-2 rounded",
-        isFriend ? "bg-pink-200" : "bg-green-200 ml-auto"
+        "max-w-[80%] mb-2 p-3 rounded-2xl shadow-sm text-sm ",
+        isFriend
+          ? "bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100" // mensaje de amigo
+          : "bg-blue-100 text-gray-900 dark:bg-blue-900/40 dark:text-gray-100 ml-auto" // mensaje propio
       )}
     >
-      <p>{message.text}</p>
-      {isFriend ? (
-        <p className="truncate text-xs">
+      <p className="whitespace-pre-wrap break-words">{message.text}</p>
+
+      <p className="truncate text-xs text-gray-500 dark:text-gray-400 mt-1">
+        {isFriend ? (
           <Suspense fallback={<span>Loading friend info...</span>}>
             <FriendEmail friendUID={message.senderId} />
           </Suspense>
-          :
-        </p>
-      ) : (
-        <p className="truncate text-xs">{user.email}</p>
-      )}
+        ) : (
+          user.email
+        )}
+      </p>
     </div>
   );
 };

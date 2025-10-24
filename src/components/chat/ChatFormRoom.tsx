@@ -49,7 +49,7 @@ const ChatFormRoom = ({ handleClickRoomId }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FormField
           control={form.control}
           name="email"
@@ -69,7 +69,7 @@ const ChatFormRoom = ({ handleClickRoomId }: Props) => {
         <Button
           type="submit"
           variant={"outline"}
-          className="w-full"
+          className="w-full border-gray-400 mb-4"
           disabled={isPending}
         >
           {isPending ? "Searching friend..." : "Search friend"}

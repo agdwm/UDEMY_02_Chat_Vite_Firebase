@@ -46,7 +46,7 @@ const ChatFormMessage = ({ roomId }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 bg-white p-4"
+        className="space-y-4 bg-white p-4"
       >
         <FormField
           control={form.control}

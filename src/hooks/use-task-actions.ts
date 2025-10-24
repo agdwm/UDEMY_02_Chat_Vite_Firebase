@@ -7,6 +7,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import type { Task } from "@/schemas/task.schema";
 
@@ -27,12 +28,17 @@ export const useTaskActions = () => {
     suspense: true,
   });
 
+  const sortedTasks = [...(tasks || [])].sort(
+    (a, b) => a.createdAt?.seconds - b.createdAt?.seconds
+  );
+
   // CREATE TASK
   const createTask = async (data: { title: string; description?: string }) => {
     const newTask = {
       ...data,
       completed: false,
       userId: user!.uid,
+      createdAt: serverTimestamp(),
     };
 
     return await addDoc(taskCollectionRef, newTask);
@@ -59,7 +65,7 @@ export const useTaskActions = () => {
   };
 
   return {
-    tasks: tasks as Task[],
+    tasks: sortedTasks as Task[],
     isLoading: status === "loading",
 
     createTask,

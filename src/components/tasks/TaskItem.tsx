@@ -1,11 +1,6 @@
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { CheckCircle, Circle, Trash2 } from "lucide-react";
 import { useTaskActions } from "@/hooks/use-task-actions";
 import { cn } from "@/lib/utils";
 import type { Task } from "@/schemas/task.schema";
@@ -42,38 +37,49 @@ const TaskItem = ({ task }: Props) => {
   };
 
   return (
-    <Card className="flex flex-row items-center justify-between mb-4">
-      <CardHeader className="flex-1">
+    <Card className="flex items-center gap-4 px-4 py-3 border bg-card/80 shadow-sm w-full  box-border">
+      <button
+        onClick={handleToggleTaskCompleted}
+        disabled={isPending}
+        className={cn(
+          "mr-2 text-muted-foreground hover:text-primary transition",
+          task.completed && "text-green-500"
+        )}
+        aria-label={
+          task.completed ? "Marcar como pendiente" : "Marcar como completada"
+        }
+      >
+        {task.completed ? (
+          <CheckCircle className="h-5 w-5" />
+        ) : (
+          <Circle className="h-5 w-5" />
+        )}
+      </button>
+      <div className="flex-1 items-center min-w-0">
         <CardTitle
           className={cn(
-            "text-lg font-semibold",
-            task.completed ? "line-through text-gray-500" : ""
+            "text-base text-center font-medium mb-1 truncate",
+            task.completed ? "line-through text-gray-400" : ""
           )}
         >
           {task.title}
         </CardTitle>
-        <CardAction className="flex gap-2">
-          <Button
-            variant={"outline"}
-            onClick={handleToggleTaskCompleted}
-            disabled={isPending}
-          >
-            Update
-          </Button>
-          <Button
-            variant={"destructive"}
-            onClick={handleDeleteTask}
-            disabled={isPending}
-          >
-            Delete
-          </Button>
-        </CardAction>
-      </CardHeader>
-      {task.description && (
-        <CardContent className="flex-1 text-right">
-          {task.description}
-        </CardContent>
-      )}
+        {task.description && (
+          <CardContent className="p-0 text-bold text-muted-foreground whitespace-pre-line break-words">
+            {task.description}
+          </CardContent>
+        )}
+      </div>
+      <Button
+        variant="outline"
+        size="icon-lg"
+        onClick={handleDeleteTask}
+        disabled={isPending}
+        className="text-destructive hover:bg-destructive/10"
+        aria-label="Eliminar tarea"
+      >
+        <Trash2 className="h-5 w-5" />
+      </Button>
     </Card>
   );
 };
