@@ -1,4 +1,5 @@
 import ProfileForm from "@/components/profile/ProfileForm";
+import Title from "@/components/ui/title";
 import { useUser } from "reactfire";
 
 const ProfilePage = () => {
@@ -10,7 +11,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-medium mb-6">Profile</h1>
+      <Title text={"Profile"} />
       <ProfileForm user={user} />
     </div>
   );
