@@ -21,14 +21,15 @@ Una aplicación web moderna de Chat en tiempo real construida con **React** y **
 
 ## ✨ Características
 
-- 🔐 **Autenticación segura** con Firebase Authentication
+- 🔐 **Autenticación segura** con _Firebase Authentication_
 - 💬 **Chat en tiempo real** con soporte para múltiples salas
 - 👥 **Gestión de amigos** con búsqueda por email
 - 📝 **Sistema de tareas** para organizar tu trabajo
 - 👤 **Perfil de usuario** personalizable
 - 🎨 **Interfaz moderna y responsive** con Tailwind CSS
-- ⚡ **Validación de formularios** con React Hook Form y Zod
-- 🔔 **Notificaciones** con Sonner
+- ⚡ **Validación de formularios** con _React Hook Form_ y _Zod_
+- 🔔 **Notificaciones** con _Sonner_
+- 📱 **Responsive** para móvil, tablet y desktop
 
 ---
 
@@ -50,10 +51,10 @@ Antes de comenzar, asegúrate de tener instalado:
 ```bash
 # Si es desde un repositorio git
 git clone <url-del-repositorio>
-cd firechat-2025
+cd UDEMY_02_Chat_Next_Firebase
 
 # Si descargaste el ZIP, descomprime y entra en la carpeta
-cd firechat-2025
+cd UDEMY_02_Chat_Next_Firebase
 ```
 
 ### 2. Instalar las dependencias
@@ -106,20 +107,20 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=tu_messaging_sender_id
 VITE_FIREBASE_APP_ID=tu_app_id
 ```
 
-> ⚠️ **Nota**: El archivo `.env.local` está ignorado en git (ver `.gitignore`).
+> ⚠️ **Nota**: El archivo `.env.local` está ignorado en git (ver `.gitignore`). Nunca compartas tus credenciales públicamente.
 
 ---
 
 ## 🚀 Estructura del Proyecto
 
 ```
-firechat-2025/
+UDEMY_02_Chat_Next_Firebase/
 ├── src/
-│   ├── assets/             # Imágenes y recursos estáticos
-│   ├── components/         # Componentes reutilizables
-│   │   ├── chat/           # Componentes relacionados con Chat
-│   │   ├── profile/        # Componentes de Perfil
-│   │   ├── tasks/          # Componentes de Tareas
+│   ├── assets/              # Imágenes y recursos estáticos
+│   ├── components/          # Componentes reutilizables
+│   │   ├── chat/           # Componentes relacionados con chat
+│   │   ├── profile/        # Componentes de perfil
+│   │   ├── tasks/          # Componentes de tareas
 │   │   └── ui/             # Componentes UI básicos
 │   ├── config/             # Configuración de Firebase
 │   ├── hooks/              # Hooks personalizados
@@ -155,13 +156,13 @@ Abre tu navegador en `http://localhost:5173` (o la URL que muestre en la termina
 
 ### Crear una cuenta
 
-1. Haz clic en "Registrarse" en la página de Login
+1. Haz clic en "Registrarse" en la página de login
 2. Ingresa un email y contraseña
 3. Completa tu perfil con tu nombre
 
 ### Usar la aplicación
 
-- **Chat**: Crea salas de chat, invita a amigos por email y comunícate en tiempo real
+- **Chat**: Crea salas de chat, invita amigos por email y comunícate en tiempo real
 - **Tareas**: Crea y gestiona una lista de tareas personal
 - **Perfil**: Actualiza tu información de usuario
 - **Dashboard**: Visualiza un resumen de tu actividad
@@ -184,13 +185,13 @@ Abre tu navegador en `http://localhost:5173` (o la URL que muestre en la termina
 
 ### Frontend Framework
 
-- **React (18+)**
-- **React Router (v6+)**
+- **React 19** - Librería de UI reactiva
+- **React Router 7** - Enrutamiento de aplicación
 
 ### Styling
 
 - **Tailwind CSS 4** - Framework de CSS utilitario
-- **next-themes** - Gestión de temas
+- **next-themes** - Gestión de temas (claro/oscuro)
 - **Radix UI** - Componentes accesibles
 
 ### Formularios y Validación
@@ -200,9 +201,9 @@ Abre tu navegador en `http://localhost:5173` (o la URL que muestre en la termina
 
 ### Backend y Base de Datos
 
-- **Firebase**
+- **Firebase** - Autenticación y base de datos en tiempo real
   - Firebase Authentication
-  - Firestore Database (listeners en tiempo real)
+  - Firestore Database
   - Firebase Hosting
 - **ReactFire** - Bindings de React para Firebase
 
@@ -215,7 +216,7 @@ Abre tu navegador en `http://localhost:5173` (o la URL que muestre en la termina
 
 ### Utilidades
 
-- **Sonner** - Sistema de notificaciones
+- **Sonner** - Sistema de notificaciones elegante
 - **Lucide React** - Iconos como componentes React
 - **class-variance-authority** - Utilidad para variantes de clases
 - **clsx** - Utilidad para nombres de clases condicionales
@@ -266,28 +267,6 @@ Abre tu navegador en `http://localhost:5173` (o la URL que muestre en la termina
 ---
 
 ## 📤 Despliegue
-
-> El proyecto está configurado para servir la carpeta `dist/` generada por Vite en Firebase Hosting mediante la configuración definida en `firebase.json`.
-
-### firebase.json
-
-El archivo `firebase.json` configura Firebase Hosting para servir correctamente la aplicación en producción.
-
-- `"public": "dist"`  
-  Indica que la carpeta `dist/` (generada por Vite tras ejecutar `npm run build`) es el directorio que Firebase Hosting servirá al público.
-
-- `"ignore"`  
-  Evita que se suban al hosting archivos y carpetas innecesarias como:
-
-  - el propio archivo `firebase.json`
-  - archivos ocultos
-  - la carpeta `node_modules`
-
-- `"rewrites"`  
-  Redirige **todas las rutas** (`"source": "**"`) a `index.html`.  
-  Esto es esencial para que el enrutado del lado del cliente (React Router) funcione correctamente y no se produzcan errores 404 al recargar o acceder directamente a una ruta interna.
-
-Esta configuración permite desplegar correctamente una **Single Page Application (SPA)** creada con Vite y React en Firebase Hosting.
 
 ### Desplegar a Firebase Hosting
 
@@ -359,11 +338,9 @@ npm run lint -- --fix
 
 ---
 
-## 👨‍💻 Autor
+## �‍💻 Autor
 
-Proyecto desarrollado como parte de un curso de **React, TypeScript y Next.js**, utilizando **Vite + React** para este proyecto concreto.
-
-> ⚠️ Nota: Aunque el curso incluye Next.js, este proyecto está construido con **React + Vite**, no con Next.js.
+Proyecto desarrollado como parte del curso Udemy de Next.js: **React JS con TypeScript y Next.js - Curso Desarrollo FullStack**
 
 ---
 
